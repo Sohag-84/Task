@@ -1,3 +1,4 @@
+import 'package:e_commerce_task/core/theme/app_colors.dart';
 import 'package:e_commerce_task/core/widget/custom_product_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +14,40 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60.h),
+        child: AppBar(
+          title: SizedBox(
+            height: 40.h,
+            child: TextField(
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search),
+                hintText: "Search Anything",
+                hintStyle: TextStyle(
+                  color: AppColors.lightGrey,
+                  fontSize: 13.sp,
+                ),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 2.w,
+                  vertical: 2,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.r),
+                  borderSide: BorderSide(color: AppColors.lightGrey),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.r),
+                  borderSide: BorderSide(color: AppColors.lightGrey),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.r),
+                  borderSide: BorderSide(color: AppColors.lightGrey),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
