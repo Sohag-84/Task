@@ -45,7 +45,12 @@ Widget customProductContainer({
                     color: AppColors.normalGrey.withValues(alpha: 0.2),
                     shape: BoxShape.circle,
                   ),
-                  child: Center(child: Icon(Icons.favorite_border_outlined)),
+                  child: Center(
+                    child: Icon(
+                      Icons.favorite_border_outlined,
+                      color: AppColors.whiteColor,
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -79,8 +84,8 @@ Widget customProductContainer({
                         Text(
                           "\$ $sellingPrice",
                           style: TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w600,
+                            fontSize: 11.sp,
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
 
@@ -89,7 +94,7 @@ Widget customProductContainer({
                             ? Text(
                               "\$$mainPrice",
                               style: TextStyle(
-                                fontSize: 10.sp,
+                                fontSize: 9.sp,
                                 fontWeight: FontWeight.w500,
                                 color: AppColors.normalGrey,
                                 decoration: TextDecoration.lineThrough,
@@ -101,7 +106,7 @@ Widget customProductContainer({
                             ? Text(
                               "$discount % OFF",
                               style: TextStyle(
-                                fontSize: 10.sp,
+                                fontSize: 9.sp,
                                 fontWeight: FontWeight.w500,
                                 color: AppColors.orrangeColor,
                               ),
