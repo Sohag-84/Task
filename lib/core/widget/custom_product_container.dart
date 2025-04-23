@@ -82,14 +82,14 @@ Widget customProductContainer({
                     Row(
                       children: [
                         Text(
-                          "\$ $sellingPrice",
+                          "\$$sellingPrice",
                           style: TextStyle(
                             fontSize: 11.sp,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
 
-                        Gap(5.w),
+                        Gap(2.w),
                         discount != null && discount != "-0%"
                             ? Text(
                               "\$$mainPrice",
@@ -101,10 +101,10 @@ Widget customProductContainer({
                               ),
                             )
                             : const SizedBox(),
-                        Gap(5.w),
+                        Gap(3.w),
                         discount != null && discount != "-0%"
                             ? Text(
-                              "$discount % OFF",
+                              "$discount OFF",
                               style: TextStyle(
                                 fontSize: 9.sp,
                                 fontWeight: FontWeight.w500,

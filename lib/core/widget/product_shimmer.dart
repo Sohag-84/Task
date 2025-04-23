@@ -14,24 +14,24 @@ Widget productShimmerEffect() {
         crossAxisCount: 2,
         mainAxisSpacing: 8.w,
         crossAxisSpacing: 5.h,
-        mainAxisExtent: 217.h,
+        mainAxisExtent: 227.h,
       ),
-      itemCount: 10,
+      itemCount: 15,
       itemBuilder: (BuildContext context, int index) {
         return Column(
           children: [
             Container(
-              height: 180.h,
-              width: 155.h,
+              height: 190.h,
+              width: 175.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5.r),
                 color: Colors.white,
               ),
             ),
             Gap(5.w),
-            Container(width: 145.w, height: 10.h, color: Colors.white),
+            Container(width: 165.w, height: 10.h, color: Colors.white),
             Gap(5.w),
-            Container(width: 145.w, height: 10.h, color: Colors.white),
+            Container(width: 165.w, height: 10.h, color: Colors.white),
           ],
         );
       },
