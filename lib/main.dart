@@ -1,8 +1,12 @@
 import 'package:e_commerce_task/features/home/presentation/pages/home_page.dart';
+import 'package:e_commerce_task/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await setupLocator();
   runApp(const MyApp());
 }
 
