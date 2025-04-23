@@ -1,3 +1,4 @@
+import 'package:e_commerce_task/core/config/app_config.dart';
 import 'package:e_commerce_task/core/theme/app_colors.dart';
 import 'package:e_commerce_task/core/widget/custom_product_container.dart';
 import 'package:e_commerce_task/features/home/presentation/bloc/product_bloc.dart';
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     productBloc = BlocProvider.of<ProductBloc>(context);
-    productBloc.add(const ProductFetchedEvent());
+    productBloc.add(const ProductFetchedEvent(endPoint: AppConfig.products));
   }
 
   @override
@@ -70,28 +71,38 @@ class _HomePageState extends State<HomePage> {
               return const Center(child: Text("No products available."));
             }
 
-            return GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 8.h,
-                crossAxisSpacing: 5.w,
-                mainAxisExtent: 282.h,
-              ),
-              itemCount: state.productList.length,
-              itemBuilder: (BuildContext context, int index) {
-                final product = state.productList[index];
-                return customProductContainer(
-                  onTap: () {},
-                  image:
-                      product.thumbnailImage ??
-                      "https://rasanasa.com/public/uploads/all/LwmwQSV6qgOsh0zD0IEMSCdf5mrvOmVDSk1e3bze.png",
-                  productName: product.name ?? "",
-                  sellingPrice: product.strokedPrice ?? "",
-                  mainPrice: product.mainPrice,
-                  discount: product.discount,
-                  rattings: double.parse(product.rating.toString()),
+            return RefreshIndicator(
+              onRefresh: () async {
+                productBloc.add(
+                  const ProductFetchedEvent(
+                    endPoint: AppConfig.products,
+                    isRefresh: true,
+                  ),
                 );
               },
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 8.h,
+                  crossAxisSpacing: 5.w,
+                  mainAxisExtent: 282.h,
+                ),
+                itemCount: state.productList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final product = state.productList[index];
+                  return customProductContainer(
+                    onTap: () {},
+                    image:
+                        product.thumbnailImage ??
+                        "https://rasanasa.com/public/uploads/all/LwmwQSV6qgOsh0zD0IEMSCdf5mrvOmVDSk1e3bze.png",
+                    productName: product.name ?? "",
+                    sellingPrice: product.strokedPrice ?? "",
+                    mainPrice: product.mainPrice,
+                    discount: product.discount,
+                    rattings: double.parse(product.rating.toString()),
+                  );
+                },
+              ),
             );
           }
           return const SizedBox();

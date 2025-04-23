@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:e_commerce_task/core/config/app_config.dart';
 import 'package:e_commerce_task/features/home/data/model/product_model.dart';
 import 'package:e_commerce_task/features/home/domain/usecase/get_product_usecase.dart';
 import 'package:equatable/equatable.dart';
@@ -41,7 +40,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
     try {
       final result = await getProductUsecase(
-        ProductPaginationParams(endPoint: AppConfig.products,page: currentPage),
+        ProductPaginationParams(endPoint: event.endPoint, page: currentPage),
       );
 
       result.fold(

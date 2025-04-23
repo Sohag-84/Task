@@ -8,10 +8,11 @@ sealed class ProductEvent extends Equatable {
 }
 
 final class ProductFetchedEvent extends ProductEvent {
+  final String endPoint;
   final bool isRefresh;
 
-  const ProductFetchedEvent({this.isRefresh = false});
+  const ProductFetchedEvent({required this.endPoint, this.isRefresh = false});
 
   @override
-  List<Object> get props => [isRefresh];
+  List<Object> get props => [endPoint, isRefresh];
 }
