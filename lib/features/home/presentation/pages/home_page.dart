@@ -1,6 +1,7 @@
 import 'package:e_commerce_task/core/config/app_config.dart';
 import 'package:e_commerce_task/core/theme/app_colors.dart';
 import 'package:e_commerce_task/core/widget/custom_product_container.dart';
+import 'package:e_commerce_task/core/widget/product_shimmer.dart';
 import 'package:e_commerce_task/features/home/presentation/bloc/product_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,7 +64,7 @@ class _HomePageState extends State<HomePage> {
       body: BlocBuilder<ProductBloc, ProductState>(
         builder: (context, state) {
           if (state is ProductLoading && productBloc.productList.isEmpty) {
-            return const Center(child: CircularProgressIndicator());
+            return productShimmerEffect();
           } else if (state is ProductLoadingFailed) {
             return Center(child: Text(state.message));
           } else if (state is ProductLoaded) {
